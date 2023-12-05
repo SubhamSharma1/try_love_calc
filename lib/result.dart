@@ -89,9 +89,11 @@ class _ResultPageState extends State<ResultPage> {
                   )
                 ],
                 ),
+
             ],
             
           ),
+          
         ) ,
          
         shape: Border(
@@ -100,6 +102,89 @@ class _ResultPageState extends State<ResultPage> {
             width:1
           )
            ),
+      ),
+
+      body: Container(
+        margin: EdgeInsets.only(left: 30.0,right: 30.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Woah !",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40.0
+              ),
+            ),
+
+            Text(
+              "Your Bond is now stronger by :",
+              style: TextStyle(
+                color: Color(0xffa74343),
+                fontSize: 20.0,
+                fontWeight: FontWeight.w500
+              ),
+            ),
+
+            Container(
+              height:400.0,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: const Color.fromARGB(255, 241, 245, 244),
+                  width: 1.0
+                ),
+                
+                borderRadius: BorderRadius.circular(20.0),
+                color: Color.fromARGB(255, 8, 76, 211),
+                boxShadow: [BoxShadow(
+                  color: Color.fromARGB(15, 245, 0, 33),
+                  blurRadius: 16.0,
+                  spreadRadius: 20.0,                  
+                )]
+              ),
+            ),
+
+            
+
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+              "Share It on",
+              style: TextStyle(
+                fontSize: 15.0,
+                fontWeight: FontWeight.w500
+              ),
+            ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [Container(
+                    color: Color.fromARGB(255, 255, 255, 247),
+                    padding: EdgeInsets.all(10.0),
+                    child: Text("Facebook",
+                    style: TextStyle(
+                      color:Color(0xffa74343),
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold
+                    ),),
+                  ),
+                  Container(
+                    child: Text("Twitter"),
+                  ),
+                  Container(
+                    child: Text("Instagram"),
+                  ),
+                  ]
+                ),
+                
+              
+              ],
+            )
+
+          ],
+        ),
       ),
 
   
