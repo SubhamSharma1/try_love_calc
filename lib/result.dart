@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
-class ResultPage extends StatefulWidget {
-  const ResultPage({super.key});
+class ResultPage extends StatelessWidget {
+   ResultPage({
+    super.key,
+    required this.malename,
+    required this.femalename,
+    required this.result,
+    });
+  final String malename,femalename;
+  final int result;
+  int randomValue =Random().nextInt(100); 
 
-  @override
-  State<ResultPage> createState() => _ResultPageState();
-}
-
-class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xfff9f9f9),
+        automaticallyImplyLeading: false,
         elevation: 0.0,
         toolbarHeight: 180.0,
         title:Container(
@@ -117,7 +122,14 @@ class _ResultPageState extends State<ResultPage> {
                 fontSize: 40.0
               ),
             ),
-
+            Text(
+              "Mr.${malename} & Miss.${femalename}",
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xffa74343)
+              ),
+            ),
             Text(
               "Your Bond is now stronger by :",
               style: TextStyle(
@@ -128,21 +140,68 @@ class _ResultPageState extends State<ResultPage> {
             ),
 
             Container(
-              height:400.0,
+              height:300.0,
               width: double.infinity,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: const Color.fromARGB(255, 241, 245, 244),
+                  color: Color.fromARGB(255, 254, 255, 255),
                   width: 1.0
                 ),
                 
                 borderRadius: BorderRadius.circular(20.0),
-                color: Color.fromARGB(255, 8, 76, 211),
+                color: Color.fromARGB(255, 245, 245, 245),
                 boxShadow: [BoxShadow(
-                  color: Color.fromARGB(15, 245, 0, 33),
-                  blurRadius: 16.0,
-                  spreadRadius: 20.0,                  
+                  color: Color(0xffEEF0F4),
+                  blurRadius: 5.0,
+                  spreadRadius: 10.0,                  
                 )]
+              ),
+              // child: Padding(
+              //   padding: EdgeInsets.all(10.0),
+              //   child: SizedBox(
+              //     child: CircularProgressIndicator(
+              //             value: 0.5,
+              //             backgroundColor: Colors.amber,
+              //              valueColor: AlwaysStoppedAnimation(Colors.pink[500]),
+              //     ),
+              //   ),
+              // ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                  result.toString(),
+                  style: TextStyle(
+                    fontSize: 180.0,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xffa74343)
+                  ),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.only(top:100.0),
+                  child: Text(
+                    "%",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xffa74343)
+                    ),
+                  ),
+                ),
+
+                // SizedBox(
+                //   height: 200.0,
+                  
+                //   child: Center(
+                //     child: CircularProgressIndicator(
+                //       value: 0.5,
+                //       backgroundColor: Colors.amber,
+                //       valueColor: AlwaysStoppedAnimation(Colors.pink[500]),
+                //     ),
+                //   ),
+                // )
+                ]
               ),
             ),
 
@@ -161,8 +220,20 @@ class _ResultPageState extends State<ResultPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [Container(
-                    color: Color.fromARGB(255, 255, 255, 247),
-                    padding: EdgeInsets.all(10.0),
+                    // color: Color.fromARGB(255, 255, 255, 247),
+                    padding: EdgeInsets.all(7.0),
+                    margin: EdgeInsets.only(top:10.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Color.fromARGB(255, 254, 255, 255),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xffEEF0F4),
+                          blurRadius: 2.0,
+                          spreadRadius: 2.0
+                        )
+                      ]
+                    ),
                     child: Text("Facebook",
                     style: TextStyle(
                       color:Color(0xffa74343),
@@ -171,20 +242,81 @@ class _ResultPageState extends State<ResultPage> {
                     ),),
                   ),
                   Container(
-                    child: Text("Twitter"),
+                    // color: Color.fromARGB(255, 255, 255, 247),
+                    padding: EdgeInsets.all(7.0),
+                    margin: EdgeInsets.only(top:10.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Color.fromARGB(255, 254, 255, 255),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xffEEF0F4),
+                          blurRadius: 2.0,
+                          spreadRadius: 2.0
+                        )
+                      ]
+                    ),
+                    child: Text("Twitter",
+                    style: TextStyle(
+                      color:Color(0xffa74343),
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold
+                    ),),
                   ),
                   Container(
-                    child: Text("Instagram"),
+                    // color: Color.fromARGB(255, 255, 255, 247),
+                    padding: EdgeInsets.all(7.0),
+                    margin: EdgeInsets.only(top:10.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Color.fromARGB(255, 254, 255, 255),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xffEEF0F4),
+                          blurRadius: 2.0,
+                          spreadRadius: 2.0
+                        )
+                      ]
+                    ),
+                    child: Text("Instagram",
+                    style: TextStyle(
+                      color:Color(0xffa74343),
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold
+                    ),),
                   ),
                   ]
                 ),
                 
               
               ],
+              
+            ),
+            Center(
+              child: ElevatedButton(onPressed: ()=>{
+                Navigator.pop(context)
+              },
+               style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xffa74343),
+                // side: BorderSide(
+                //   style: 
+                // )
+               ),
+               child: Text(
+                "Try Again",
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold
+                ),
+              )),
             )
 
           ],
+
+        
         ),
+
+        
       ),
 
   

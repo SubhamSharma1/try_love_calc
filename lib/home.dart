@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:calculator_love/result.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -10,6 +13,19 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   final _loveform = GlobalKey<FormState>();
+  final TextEditingController _maleNameController = TextEditingController();
+  final TextEditingController _femaleNameController = TextEditingController();
+  int calculateLove($male,$female)
+  {
+    String combinedNames = $male + $female;
+    int totalAscii = 0;
+    for (int i = 0; i < combinedNames.length; i++) {
+      totalAscii += combinedNames.codeUnitAt(i);
+    }
+    int randomNumber = Random().nextInt(15);
+    totalAscii-=randomNumber;
+    return totalAscii % 101;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,6 +108,7 @@ class _HomeState extends State<Home> {
                       Padding(
                     padding: const EdgeInsets.only(top:50.0,right: 20.0),
                     child: TextFormField(
+                      controller: _maleNameController,
                       decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.person),
                         prefixIconColor:const Color(0xffa74343) ,
@@ -114,7 +131,7 @@ class _HomeState extends State<Home> {
                       ),
                     validator: (value) {
                       if(value == null || value.isEmpty){
-                        return "Please Enter your name";
+                        return "Don't you have a name ? Man";
                       }
                       return null;
                     },
@@ -123,6 +140,7 @@ class _HomeState extends State<Home> {
                       Padding(
                       padding: const EdgeInsets.only(top:20.0,right: 20.0),
                       child: TextFormField(
+                        controller: _femaleNameController,
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.person_2),
                           prefixIconColor:const Color(0xffa74343),
@@ -166,12 +184,20 @@ class _HomeState extends State<Home> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.large(
         onPressed: ()=>{},
+
         backgroundColor:const Color(0xffa74343) ,
         child: IconButton(
           onPressed:() {
             if(_loveform.currentState!.validate())
             {
-                
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context)=> ResultPage(
+                    malename: _maleNameController.text,
+                    femalename:_femaleNameController.text,
+                    result:calculateLove( _maleNameController.text,_femaleNameController.text)
+                  )),
+                  );
             }
           },
           icon:const Icon(Icons.favorite),
