@@ -1,8 +1,9 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:calculator_love/result.dart';
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart' as http;
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -26,6 +27,10 @@ class _HomeState extends State<Home> {
     totalAscii-=randomNumber;
     return totalAscii % 101;
   }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,6 +170,7 @@ class _HomeState extends State<Home> {
                           if(value == null || value.isEmpty){
                             return "Are you single ? 😅";
                           }
+                        
                           return null;
                         },
                       

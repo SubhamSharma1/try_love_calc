@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http:
+  percent_indicator: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +19,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: PlayFair     
+      fonts:
+        - asset: assets/playfairr.ttf
+
+
+

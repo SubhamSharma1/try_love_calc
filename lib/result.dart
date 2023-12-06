@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-
+import 'package:percent_indicator/percent_indicator.dart';
 class ResultPage extends StatelessWidget {
    ResultPage({
     super.key,
@@ -10,6 +10,7 @@ class ResultPage extends StatelessWidget {
     });
   final String malename,femalename;
   final int result;
+  bool animationFinished =false;
   int randomValue =Random().nextInt(100); 
 
   @override
@@ -156,53 +157,73 @@ class ResultPage extends StatelessWidget {
                   spreadRadius: 10.0,                  
                 )]
               ),
-              // child: Padding(
-              //   padding: EdgeInsets.all(10.0),
-              //   child: SizedBox(
-              //     child: CircularProgressIndicator(
-              //             value: 0.5,
-              //             backgroundColor: Colors.amber,
-              //              valueColor: AlwaysStoppedAnimation(Colors.pink[500]),
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Stack(
+                  children: [
+                    Center(
+                      child: SizedBox(
+                        height: 260.0,
+                        width: double.infinity,
+                        child:new CircularPercentIndicator(
+                                radius: 130.0,
+                                animation: true,
+                                animationDuration: 2000,
+                                lineWidth: 20.0,
+                                percent: result/100,                                
+                                center: new Text("${result.toString()}%",
+                                style: TextStyle(
+                                  fontSize: 40.0,
+                                  color: Color(0xffa74343),
+                                  fontWeight: FontWeight.bold
+                                ),),
+                                progressColor: Color(0xffa74343),
+                                backgroundColor: Color.fromARGB(255, 255, 142, 142),
+                                circularStrokeCap: CircularStrokeCap.round,
+                               
+                )
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // child: Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   crossAxisAlignment: CrossAxisAlignment.center,
+              //   children: [
+              //     Text(
+              //     result.toString(),
+              //     style: TextStyle(
+              //       fontSize: 180.0,
+              //       fontWeight: FontWeight.w500,
+              //       color: Color(0xffa74343),
               //     ),
               //   ),
-              // ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                  result.toString(),
-                  style: TextStyle(
-                    fontSize: 180.0,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xffa74343)
-                  ),
-                ),
 
-                Padding(
-                  padding: EdgeInsets.only(top:100.0),
-                  child: Text(
-                    "%",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xffa74343)
-                    ),
-                  ),
-                ),
+              //   Padding(
+              //     padding: EdgeInsets.only(top:100.0),
+              //     child: Text(
+              //       "%",
+              //       style: TextStyle(
+              //         fontWeight: FontWeight.bold,
+              //         color: Color(0xffa74343)
+              //       ),
+              //     ),
+              //   ),
 
-                // SizedBox(
-                //   height: 200.0,
+              //   // SizedBox(
+              //   //   height: 200.0,
                   
-                //   child: Center(
-                //     child: CircularProgressIndicator(
-                //       value: 0.5,
-                //       backgroundColor: Colors.amber,
-                //       valueColor: AlwaysStoppedAnimation(Colors.pink[500]),
-                //     ),
-                //   ),
-                // )
-                ]
-              ),
+              //   //   child: Center(
+              //   //     child: CircularProgressIndicator(
+              //   //       value: 0.5,
+              //   //       backgroundColor: Colors.amber,
+              //   //       valueColor: AlwaysStoppedAnimation(Colors.pink[500]),
+              //   //     ),
+              //   //   ),
+              //   // )
+              //   ]
+              // ),
             ),
 
             
@@ -309,7 +330,8 @@ class ResultPage extends StatelessWidget {
                   fontWeight: FontWeight.bold
                 ),
               )),
-            )
+            ),
+
 
           ],
 
