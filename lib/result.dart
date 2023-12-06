@@ -242,12 +242,32 @@ class ResultPage extends StatelessWidget {
                     ),
               
               child: 
-                Text('"${quote}"😍',
-                style: TextStyle(
-                  color: Color(0xffa74343),
-                  fontSize: 15.0,
-                  
-                ),)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: 
+                [
+                  Text(
+                    "Words of Love",
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                      color: Color.fromARGB(255, 185, 3, 3),
+                      
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top:10),
+                    child: Text('"${quote}"😍',
+                      style: TextStyle(
+                        color: Color(0xffa74343),
+                        fontSize: 15.0,
+                        
+                      ),),
+                  ),
+                ]
+              ),
+                
             ),
 
             Column(
