@@ -7,8 +7,9 @@ class ResultPage extends StatelessWidget {
     required this.malename,
     required this.femalename,
     required this.result,
+    required this.quote,
     });
-  final String malename,femalename;
+  final String malename,femalename,quote;
   final int result;
   bool animationFinished =false;
   int randomValue =Random().nextInt(100); 
@@ -226,7 +227,28 @@ class ResultPage extends StatelessWidget {
               // ),
             ),
 
-            
+            Container(
+              padding: EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Color.fromARGB(255, 254, 255, 255),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xffEEF0F4),
+                          blurRadius: 2.0,
+                          spreadRadius: 2.0
+                        )
+                      ]
+                    ),
+              
+              child: 
+                Text('"${quote}"😍',
+                style: TextStyle(
+                  color: Color(0xffa74343),
+                  fontSize: 15.0,
+                  
+                ),)
+            ),
 
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

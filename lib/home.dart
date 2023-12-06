@@ -27,8 +27,17 @@ class _HomeState extends State<Home> {
     totalAscii-=randomNumber;
     return totalAscii % 101;
   }
-
-
+  Future<String> generateRandomLoveQuote()async
+  {
+    var url = Uri.parse("https://api.api-ninjas.com/v1/quotes?category=love");
+    var response=await http.get(
+      url,
+      headers: {'X-Api-Key': 'ayBhGYpj6ST2YJNeBuBsmg==sJq0RgynIKPP3QiS'}
+      );
+    var body =jsonDecode(response.body);
+    print(body);
+    return body[0]['quote'];
+  }
 
 
   @override
@@ -193,15 +202,17 @@ class _HomeState extends State<Home> {
 
         backgroundColor:const Color(0xffa74343) ,
         child: IconButton(
-          onPressed:() {
+          onPressed:() async{
             if(_loveform.currentState!.validate())
             {
+                  String quote = await generateRandomLoveQuote();
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context)=> ResultPage(
                     malename: _maleNameController.text,
                     femalename:_femaleNameController.text,
-                    result:calculateLove( _maleNameController.text,_femaleNameController.text)
+                    result:calculateLove( _maleNameController.text,_femaleNameController.text),
+                    quote:quote,
                   )),
                   );
             }
